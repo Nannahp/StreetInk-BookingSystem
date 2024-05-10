@@ -26,15 +26,20 @@ public class DashboardController {
         ArrayList<TattooArtist> profiles = (ArrayList) tattooArtistService.showTattooArtist();
 
         // temporary profile
-        TattooArtist profile = profiles.get(0);
+        TattooArtist profile = profiles.get(1);
 
         int bookingsADay = dashboardService.calculateAmtBookingsADay(profile.getUsername());
         int bookingsAWeek = dashboardService.calculateAmtBookingsAWeek(profile.getUsername());
+
+        int bookingPercentageOfMonth = dashboardService.calculateBookingPercentageOfMonth(profile.getUsername());
+        int monthProgressPercentage = dashboardService.calculateMonthProgressPercentage();
 
 
         model.addAttribute("profile", profile);
         model.addAttribute("bookingsADay", bookingsADay);
         model.addAttribute("bookingsAWeek", bookingsAWeek);
+        model.addAttribute("bookingPercentageOfMonth", bookingPercentageOfMonth);
+        model.addAttribute("monthProgressPercentage", monthProgressPercentage);
         return "home/dashboard";
     }
 }

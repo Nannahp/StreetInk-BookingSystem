@@ -16,4 +16,8 @@ public class TattooArtistService {
     public List<TattooArtist> showTattooArtist(){
         return tattooArtistRepository.showTattooArtist();
     }
+
+    public TattooArtist getTattooArtistByUsername(String username) {
+        return tattooArtistRepository.getTattooArtistByUsername(username);
+    }
 }

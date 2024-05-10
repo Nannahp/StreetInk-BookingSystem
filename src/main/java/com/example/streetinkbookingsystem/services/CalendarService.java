@@ -1,16 +1,30 @@
 package com.example.streetinkbookingsystem.services;
 
+import com.example.streetinkbookingsystem.models.Booking;
 import com.example.streetinkbookingsystem.models.Calendar;
+import com.example.streetinkbookingsystem.models.TattooArtist;
+import com.example.streetinkbookingsystem.repositories.BookingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Array;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.Month;
 import java.time.temporal.WeekFields;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CalendarService {
+
+    @Autowired
+    DashboardService dashboardService;
+    @Autowired
+    TattooArtistService tattooArtistService;
+    @Autowired
+    BookingService bookingService;
 
     public LocalDate getCurrentDate(){
         Calendar calendar = new Calendar();
@@ -59,5 +73,16 @@ public class CalendarService {
         return endFillers;
 
     }
+
+    public int calculateDegreeOfBookedDay(LocalDate currentDate, String username){
+        TattooArtist artist = tattooArtistService.getTattooArtistByUsername(username);
+        double avgWorkHours = artist.getAvgWorkHours();
+        List<Booking> bookingsOnDate = bookingService.getBookingsForDay(currentDate, username);
+        int totalBookedHoursForDay = dashboardService.calculateTotalBookedHours(bookingsOnDate);
+        double bookingPercentage = ((double) totalBookedHoursForDay / avgWorkHours) * 100;
+        return (int) Math.round(bookingPercentage);
+    }
+
+
 }
 

@@ -17,7 +17,7 @@
     <!--prev and next buttons-->
     <div class="calendar-navigation">
 
-        <form  class="previous" th:action="@{/calendar/previous}" method="post">
+        <form  class="previous" th:action="@{/calendar/previous(username=${username})}" method="post">
             <input type="hidden" name="year" th:value="${date.year}" />
             <input type="hidden" name="month" th:value="${date.monthValue}" />
             <button class="gray-button" type="submit">Previous</button>
@@ -26,7 +26,7 @@
 
         <h2 class="year" th:text="${date.getYear()}"></h2>
 
-        <form class="next" th:action="@{/calendar/next}" method="post">
+        <form class="next" th:action="@{/calendar/next(username=${username})}" method="post">
             <input type="hidden" name="year" th:value="${date.year}" />
             <input type="hidden" name="month" th:value="${date.monthValue}" />
             <button class="gray-button"  type="submit">Next</button>
@@ -69,19 +69,17 @@
                     </th:block>
 
                     <!-- Iterate through days in the month -->
-                    <!--Should be based on percentage of day booked, but this will do for now -->
-
                       <li class="day-wrapper" th:each="day : ${daysInMonth}">
-                          <th:block th:if="${bookingService.getBookingCountForDate(day, username) > 3}">
-                              <a class="fully-booked-day" th:href="@{/day}" th:text="${day.getDayOfMonth()}"></a>
+                          <th:block th:if="${calendar.calculateDegreeOfBookedDay(day, username) > 80}">
+                              <a class="fully-booked-day" th:href="@{/day(username=${username}, date=${day})}" th:text="${day.getDayOfMonth()}"></a>
                           </th:block>
 
-                          <th:block th:if="${bookingService.getBookingCountForDate(day, username) <= 3 && bookingService.getBookingCountForDate(day,username) >= 1}">
-                              <a class="semi-booked-day" th:href="@{/day}" th:text="${day.getDayOfMonth()}"></a>
+                          <th:block th:if="${calendar.calculateDegreeOfBookedDay(day, username) <= 80 && calendar.calculateDegreeOfBookedDay(day, username) >= 1}">
+                              <a class="semi-booked-day" th:href="@{/day(username=${username}, date=${day})}" th:text="${day.getDayOfMonth()}"></a>
                           </th:block>
 
-                          <th:block th:if="${bookingService.getBookingCountForDate(day,username) < 1}">
-                              <a class="open-day" th:href="@{/day}" th:text="${day.getDayOfMonth()}"></a>
+                          <th:block th:if="${calendar.calculateDegreeOfBookedDay(day, username) == 0}">
+                              <a class="open-day" th:href="@{/day(username=${username}, date=${day})}" th:text="${day.getDayOfMonth()}"></a>
                           </th:block>
                       </li>
 

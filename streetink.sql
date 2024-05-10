@@ -1,4 +1,3 @@
-
 CREATE DATABASE IF NOT EXISTS street_ink_booking_system;
 USE street_ink_booking_system;
 
@@ -32,8 +31,8 @@ CREATE TABLE client (
 DROP TABLE IF EXISTS booking;
 CREATE TABLE booking (
                          id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-                         start_time_slot INT NOT NULL,
-                         end_time_slot INT NOT NULL,
+                         start_time_slot TIME NOT NULL,
+                         end_time_slot TIME NOT NULL,
                          date DATE NOT NULL,
                          client_id INT NOT NULL,
                          username VARCHAR(255) NOT NULL,
@@ -44,8 +43,6 @@ CREATE TABLE booking (
                          FOREIGN KEY (client_id) REFERENCES client(id),
                          FOREIGN KEY (username) REFERENCES tattoo_artist(username) ON DELETE CASCADE
 );
-
-
 
 DROP TABLE IF EXISTS project_picture;
 CREATE TABLE project_picture (
@@ -68,9 +65,15 @@ VALUES
 
 
 INSERT INTO booking (start_time_slot, end_time_slot, date, client_id, username, project_title, project_desc, personal_note, is_deposit_payed)
-VALUES (10, 13, '2024-05-16', 1, "smallDummy", "butterfly on forhead", "coloured butterfly, in memory of mother", "", 1),
-       (14, 15, '2024-05-16', 2, "smallDummy", "star on ass", "specific star at coordinate: RA (Right Ascension): 12h 34m 56s Dec (Declination): +45° 67' 89", "He's gonna be late", 0),
-       (10, 15, '2024-05-17', 1, "bigDummy", "earworm", "specific worm behind ear", "idk why anyone would want that", 0),
-       (14, 18, '2024-05-20', 2, "bigDummy", "illuminati on bellybutton", " ", "late", 0);
+VALUES ('10:00:00', '13:00:00', '2024-05-16', 1, "smallDummy", "butterfly on forhead", "coloured butterfly, in memory of mother", "", 1),
+       ('14:15:00', '15:00:00', '2024-05-16', 2, "smallDummy", "star on ass", "specific star at coordinate: RA (Right Ascension): 12h 34m 56s Dec (Declination): +45° 67' 89", "He's gonna be late", 0),
+       ('10:00:00', '12:30:00', '2024-05-20', 1, "bigDummy", "earworm", "specific worm behind ear", "idk why anyone would want that", 0),
+       ('15:30:00', '18:00:00', '2024-05-17', 2, "bigDummy", "illuminati on bellybutton", " ", "late", 0);
 
-SELECT * FROM booking;
+
+INSERT INTO booking (start_time_slot, end_time_slot, date, client_id, username, project_title, project_desc, personal_note, is_deposit_payed)
+VALUES
+    ('09:15:00', '12:45:00', '2024-05-17', 2, "smallDummy", "dragon sleeve", "full sleeve dragon tattoo", "Customer is very excited", 1),
+    ('10:30:00', '15:30:00', '2024-05-17', 1, "bigDummy", "phoenix back tattoo", "large phoenix tattoo on back", "Requires multiple sessions", 0),
+    ('09:45:00', '14:30:00', '2024-05-18', 1, "bigDummy", "skull forearm", "skull tattoo on forearm", "Customer wants it in grayscale", 1),
+    ('15:00:00', '18:30:00', '2024-05-18', 2, "smallDummy", "floral half-sleeve", "intricate floral design", "Customer is bringing their own design", 1);

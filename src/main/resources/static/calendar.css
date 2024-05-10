@@ -3,7 +3,7 @@ section {
     width: 55rem;
     height: 95rem;
     padding: 1em;
-    Gmargin: auto auto auto -3em;
+    margin: auto auto auto -4em;
 }
 h1 {
     display:grid;
@@ -37,8 +37,8 @@ h1 {
 }
 
 .calendar-information-bar {
-display: grid;
-    grid-template-columns: 10% 1fr;
+    display: grid;
+    grid-template-columns: 11% 1fr;
     grid-column-gap: 5px;
     background-color: var(--accent-red);
     font-size: 1.5em;
@@ -49,7 +49,7 @@ display: grid;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-column-gap: 1em;
-    margin-left: 1.5em;
+    margin-left: 0.5em;
 }
 
 
@@ -57,15 +57,15 @@ display: grid;
 
     .calendar-grid {
         display: grid;
-        grid-template-columns: 10% 1fr; /* Left column takes up 10%, right column takes up the remaining space */
+        grid-template-columns: 8% 1fr;
         justify-content: center;
-        padding: 5% 1% 1%;
+        padding: 6% 1% 1%;
     }
 
     .weeknumbers {
         display: grid;
-        grid-row-gap: 8em;
-        padding-top: 1.5em;
+        grid-row-gap: 9em;
+        padding-top: 3em;
     }
 
 
@@ -80,6 +80,8 @@ display: grid;
         grid-template-columns: repeat(7, 1fr);
         grid-template-rows: repeat(6, 1fr);
         grid-row-gap: 6em;
+        margin-left: 2.5em;
+        grid-column-gap: 1.7em;
 
 
 

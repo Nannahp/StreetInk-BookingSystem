@@ -10,7 +10,7 @@
     --white: hsla(0, 0%, 100%, 1); /* #FFFFFF */
 
     --accent-red: hsl(0, 38%, 37%); /* #813A3A */
-    --semi-booked-day: hsla(0, 50%, 47%, 1); /* #B16F6F */
+    --semi-booked-day: hsla(40, 80%, 40%, 1); /* #B16F6F */
     --fully-booked-day: hsla(0, 50%, 41%, 1); /* #A85252 */
     --booking-on-day: hsla(0, 50%, 37%, 0.8); /* #813A3A with 80% opacity */
 }

@@ -14,10 +14,10 @@
                 <h2>You have <span class="red big" th:text="${bookingsADay}"></span> bookings today</h2>
             </div>
             <div class="inset stat-wrapper">
-                <h2><span class="red big" th:text="'xx' + '%'"></span> of your month is booked</h2>
+                <h2><span class="red big" th:text="${bookingPercentageOfMonth} + '%'"></span> of your month is booked</h2>
             </div>
             <div class="inset stat-wrapper">
-                <h2>You are <span  class="red big" th:text="'xx' + '%'"></span> into the month</h2>
+                <h2>You are <span  class="red big" th:text="${monthProgressPercentage} + '%'"></span> into the month</h2>
             </div>
             <div class="inset stat-wrapper last">
                 <h2>You have <span class="red big" th:text="${bookingsAWeek}"></span> bookings this week</h2>
@@ -25,9 +25,8 @@
 
 
         </section>
+        <a class="red-button box-shadow" th:href="@{/calendar(username=${profile.getUsername()})}">Calendar</a>
 
-        <a class="red-button box-shadow" th:href="@{/calendar}">Calendar</a>
-    
     </main>
 
     <footer th:block th:insert="home/footer :: footer"></footer>
