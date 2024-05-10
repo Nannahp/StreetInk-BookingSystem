@@ -1,6 +1,24 @@
 <header>
   <a th:href="@{/}">
-    <img src="/assets/logo_temp.png" alt="logo">
+    <img th:if="${loggedIn}" th:src="@{${tattooArtist.profilePicture}}" alt="Profile Picture" class="profile-pic">
+    <img th:unless="${loggedIn}" src="/assets/Default_Profile_pic.png" alt="Default Profile Picture" class="profile-pic">
   </a>
 
+  <a th:href="@{/}">
+    <img src="/assets/logo_temp.png" alt="logo" class="logo">
+  </a>
+
+  <div class="dropdown">
+    <span>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </span>
+    <div class="dropdown-content">
+      <a th:href="@{/}">Calendar</a>
+      <a th:href="@{/}">Dashboard</a>
+      <a th:href="@{/}">Client list</a>
+      <a th:href="@{/}">Log out</a>
+    </div>
+  </div>
 </header>

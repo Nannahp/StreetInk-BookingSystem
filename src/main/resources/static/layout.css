@@ -42,6 +42,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 main {
@@ -165,10 +166,69 @@ footer img {
 header {
     width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
     flex-shrink: 0;
-
 }
+
+.logo {
+    width: 200px;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* laver billedet rundt */
+    cursor: pointer; /* ændrer curser til en pointer */
+    margin-bottom: 25px;
+    margin-top: 25px;
+    margin-left: 50px;
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+    margin-right: 50px;
+}
+
+.dropdown-toggle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.line {
+    width: 30px;
+    height: 4px;
+    background-color: var(--white);
+    margin: 5px 0; /* Adjust spacing between lines */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* Position below the button */
+    right: 0; /* Align to the right */
+    background-color: var(--background-color);
+    min-width: 100px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 80px;
+}
+
+.dropdown-content a {
+    color: var(--white);
+    padding: 40px 40px; /* Adjust padding as needed */
+    text-decoration: none;
+    display: block;
+    font-size: x-large;
+    border-bottom: 1px solid var(--white);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+
