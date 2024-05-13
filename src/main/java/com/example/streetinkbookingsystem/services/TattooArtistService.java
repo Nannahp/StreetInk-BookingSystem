@@ -18,6 +18,6 @@ public class TattooArtistService {
     }
 
     public TattooArtist getTattooArtistByUsername(String username) {
-        return tattooArtistRepository.getTattooArtistByUsername(username);
+        return tattooArtistRepository.getTattooArtistFromUsername(username);
     }
 }

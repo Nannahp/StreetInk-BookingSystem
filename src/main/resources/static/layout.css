@@ -173,7 +173,9 @@ header {
 }
 
 .logo {
+    flex-grow: 1;
     width: 200px;
+    margin: auto;
 }
 
 .profile-pic {
