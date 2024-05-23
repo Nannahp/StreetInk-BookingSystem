@@ -257,6 +257,7 @@ public class ClientController {
 
         clientService.updateClientOnBooking(bookingId, client.getId());
 
+        System.out.println("uhuu");
         return "redirect:/booking?bookingId=" + bookingId + "&username=" + username;
     }
 }
