@@ -279,8 +279,12 @@ public class ClientController {
 
         clientService.updateClientOnBooking(bookingId, client.getId());
 
-        return "redirect:/booking-preview?bookingId=" + bookingId + "&username=" + username + "&clientId=" + clientId;
+
+       // return "redirect:/booking-preview?bookingId=" + bookingId + "&username=" + username + "&clientId=" + clientId;
         //return "redirect:/booking-preview?bookingId=" + bookingId + "&username=" + username;
+
+
+        return "redirect:/booking?bookingId=" + bookingId + "&username=" + username;
     }
 
     /**
