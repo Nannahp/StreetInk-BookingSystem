@@ -100,6 +100,7 @@ import java.util.regex.Pattern;
         message.setTo(recipient);
         message.setSubject(subject);
         message.setText(content);
+        message.setFrom("tatto.streetink@hotmail.com");
 
         // Send the email using JavaMailSender
         javaMailSender.send(message);
