@@ -241,7 +241,6 @@ public class BookingController {
     @GetMapping("/cancel-booking")
     public String cancelBooking(@RequestParam int bookingId, @RequestParam String date) {
         bookingService.deleteBooking(bookingId);
-        System.out.println("here");
         return "redirect:/day?date=" + date;
     }
 
